@@ -1,6 +1,7 @@
  void setup(){
   size(500,500);
  }
+
 class GamePong {
    
   GamePong(){
@@ -12,30 +13,39 @@ class GamePong {
 
 }
 class PongBall {
-  int xpos, ypos, diameter;
-  PongBall(int x, int y , int di){
+  
+  float xpos, ypos, diameter;
+  
+  PongBall(float x, float y , float di){
     xpos = x;
     ypos = y;
     diameter = di;
   }
+  
   void createBall(){
   ellipse(xpos,ypos,diameter,diameter);
   }
-  void ballBounce(){
-  }
+  
 
 }
 class PaddleBar {
-  int padx, pady, padw, padh;
-  PaddleBar(int X, int Y, int W, int H){
+  
+  float padx, pady, padw, padh;
+  
+  PaddleBar(float X, float Y, float W, float H){
     padx = X;
     pady = Y;
     padw = W;
     padh = H; 
   }
+  
   void createBar(){
     rect(padx,pady,padw,padh) ;
    }
+   
    void barMove(){
    }
+   
+   void ballBounce(){
+  }
 }
