@@ -1,13 +1,19 @@
-class PongGame {
-  int 
-  PongGame()
+ void setup(){
+  size(500,500);
+ }
+class GamePong {
+   
+  GamePong(){
+  }
+ 
+  
 
 
 
 }
 class PongBall {
   int xpos, ypos, diameter;
-  Pongball(int x, int y , int di){
+  PongBall(int x, int y , int di){
     xpos = x;
     ypos = y;
     diameter = di;
@@ -20,15 +26,15 @@ class PongBall {
 
 }
 class PaddleBar {
-  int x, y, w, h;
+  int padx, pady, padw, padh;
   PaddleBar(int X, int Y, int W, int H){
-    x = X;
-    y = Y;
-    w = W;
-    h = H; 
+    padx = X;
+    pady = Y;
+    padw = W;
+    padh = H; 
   }
   void createBar(){
-    rect(x,y,w,h) ;
+    rect(padx,pady,padw,padh) ;
    }
    void barMove(){
    }
