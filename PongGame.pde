@@ -49,10 +49,16 @@ class PaddleBar {
 }
 
  PongBall A;
+ PaddleBar B;
+ PaddleBar C;
  void setup(){
-  size(500,500);
+  size(800,800);
 
   A = new PongBall(width/2,height/2,50);
   A.createBall();
+  B = new PaddleBar(700,500,50,150);
+  B.createBar();
+  B = new PaddleBar(50,50,50,150);
+  B.createBar();
  }
   
