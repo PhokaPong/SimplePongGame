@@ -1,6 +1,4 @@
- void setup(){
-  size(500,500);
- }
+
 
 class GamePong {
    
@@ -49,3 +47,12 @@ class PaddleBar {
    void ballBounce(){
   }
 }
+
+ PongBall A;
+ void setup(){
+  size(500,500);
+
+  A = new PongBall(width/2,height/2,50);
+  A.createBall();
+ }
+  
