@@ -3,7 +3,8 @@ float pady;
 float padh;
 float padx;
 float move;
-float easing = 0.25;
+
+
 
 PongBall A;
  PaddleBar B;
@@ -15,15 +16,13 @@ PongBall A;
    pady =(height/2)-padh/2;
    padx =width-100;
    
+   
   
 
   A = new PongBall(xpos,height/2,50);
-  B = new PaddleBar(padx,pady,50,padh);
-  B.createBar();
+  C = new PaddleBar(width-50,pady,50,padh,1);
+  B = new PaddleBar(0,pady,50,padh,0);
   
- 
-  C = new PaddleBar(50,pady,50,padh);
-  C.createBar();
  
  }
  void draw(){
@@ -69,20 +68,29 @@ class PongBall {
 }
 class PaddleBar {
   
-  float padx, pady, padw, padh;
+  float playNo, padx, pady, padw, padh;
   
-  PaddleBar(float X, float Y, float W, float H){
+  PaddleBar(float X, float Y, float W, float H,float PlayNo){ 
     padx = X;
     pady = Y;
     padw = W;
     padh = H; 
+    playNo = PlayNo;
   }
   
   void createBar(){
     rect(padx,pady,padw,padh) ;
-    float targetY = mouseY;
-    float dy = targetY - pady;
-        pady += dy * easing;
+    float targetY = mouseY-padh/2;
+    if(playNo == 0){
+    if(mouseX <= 250){
+      float dy = targetY - pady;
+      pady += dy * 0.25;}
+  }
+  if(playNo == 1){
+    if(mouseX >= width - 250){
+      float dy = targetY - pady;
+      pady += dy * 0.25;}
+  }
 
    }
    
