@@ -100,6 +100,13 @@ class PongBall {
         speedBx =0 - abs(speedBx);
         speedBy = abs(speedBx)*((C.pady+(C.padh/2)) - ypos)/150;
       } 
+      if(ypos - diameter/2 <= 0){
+          speedBy = 0 - abs(speedBy);  
+        }
+    
+        if(ypos + diameter/2 >= height){
+          speedBy = 0 + abs(speedBy);  
+        }
     
   }
 }
