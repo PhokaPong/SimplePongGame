@@ -6,6 +6,7 @@ float padx;
 
 
 
+GamePong Pong;
 PongBall A;
  PaddleBar B;
  PaddleBar C;
@@ -22,10 +23,21 @@ PongBall A;
   A = new PongBall(xpos,height/2,50);
   C = new PaddleBar(width-50,pady,50,padh,1);
   B = new PaddleBar(0,pady,50,padh,0);
+  Pong = new GamePong();
   
  
  }
  void draw(){
+   Pong.draw();
+   
+   
+ } 
+class GamePong {
+    int  playerS1 =0,playerS2 ; 
+    GamePong(){
+    }
+    
+   void draw(){
    background(0);
    stroke(5);
    
@@ -36,11 +48,42 @@ PongBall A;
    A.bounce();
    B.createBar();
    C.createBar();
- } 
-class GamePong {
+   winCheck();
    
-  GamePong(){
-  }
+   textSize(30);
+   text(playerS1,310,30);
+   text(playerS2,380,30);
+   if (A.ballOut){
+     if(A.playerside == 0){
+       playerS2 ++;
+     }
+     if(A.playerside == 1){
+       playerS1 ++;
+       
+     
+     }
+       delay(1000);
+      A = new PongBall(xpos,height/2,50);
+   }
+ }
+   void winCheck(){
+       if(playerS1 == 7 || playerS2 == 7 ){
+           A = new PongBall(xpos,height/2,50);
+        }
+       if(playerS1 == 7 ){
+           textSize(50);
+           text("player 1 is winner",100,320);
+       }
+       if(playerS2 == 7 ){
+           textSize(50);
+           text("player 2 is winner",100,320);
+       }
+   
+   }
+ 
+   
+   
+ 
  
   
 
@@ -50,6 +93,8 @@ class GamePong {
 class PongBall {
   
   float xpos, ypos, diameter,speedBx,speedBy;
+  int playerside;
+  boolean ballOut = false;
   
   PongBall(float x, float y , float di){
     xpos = x;
@@ -57,20 +102,18 @@ class PongBall {
     diameter = di;
     speedBx = random(0,6);
     speedBy = random(0,6);
-    println(speedBx);
-    println(speedBy);
     if(speedBx > 3){
-      speedBx = 4;
+      speedBx = 6;
     }
     else{
-    speedBx = -4;
+    speedBx = -6;
     }
     
     if(speedBy > 3){
-      speedBy = 2;
+      speedBy = 4;
     }
     else{
-    speedBy = -2;
+    speedBy = -4;
     }
     
     
@@ -101,7 +144,7 @@ class PongBall {
         speedBx =0 - abs(speedBx);
         speedBy = abs(speedBx)*((C.pady+(C.padh/2)) - ypos)/150;
       } 
-    }
+    
       if(ypos - diameter/2 <= 0){
           speedBy = 0 - abs(speedBy);  
         }
@@ -109,6 +152,22 @@ class PongBall {
         if(ypos + diameter/2 >= height){
           speedBy = 0 + abs(speedBy);  
         }
+    
+  }
+    else{
+        if(xpos<width/2){
+             playerside = 0;
+             
+        }
+        else{
+            playerside = 1;
+        }
+        ballOut = true;
+       
+            
+          
+       
+    }
     
   }
 }
@@ -145,16 +204,9 @@ class PaddleBar {
   }
 
    }
+  
    
-   void barMove(){
    
-     
-   }
-   
-   void ballBounce(){
-   //xpos=xPos+xDir;
-   
-   }
 }
 
  
