@@ -87,6 +87,7 @@ class PongBall {
   }
   
   void bounce() {
+    if(xpos > 0 && xpos  < width){
     if(xpos-(diameter/2) <= B.padx + (B.padw) 
       &&  ypos + (diameter/2) >= B.pady 
       && ypos- (diameter/2) <= B.pady + B.padh){
@@ -100,6 +101,7 @@ class PongBall {
         speedBx =0 - abs(speedBx);
         speedBy = abs(speedBx)*((C.pady+(C.padh/2)) - ypos)/150;
       } 
+    }
       if(ypos - diameter/2 <= 0){
           speedBy = 0 - abs(speedBy);  
         }
